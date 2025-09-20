@@ -1,70 +1,73 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="hy">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ՀՐԱՎԵՐ</title>
+    <title>Մկրտության Հրավեր</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Герой секция -->
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <!-- Имена детей -->
-            <div class="names-container">
-                <div class="name-item">
-                    Արման <span class="date">29.09.2011</span>
-                </div>
-                <div class="name-item">
-                    և
-                </div>
-                <div class="name-item">
-                    Ալյոնա <span class="date">29.05.2013</span>
+            <!-- Title Instead of Names -->
+            <h1 class="hero-title">ՄԿՐՏՈՒԹՅԱՆ ՀՐԱՎԻՐԱՏՈՄՍ</h1>
+            <!-- Countdown Timer -->
+            <div class="countdown">
+                <h3>Մնացել է</h3>
+                <div class="countdown-timer">
+                    <div class="countdown-item">
+                        <span id="days">00</span>
+                        <span>Օր</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="hours">00</span>
+                        <span>Ժամ</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="minutes">00</span>
+                        <span>Րոպե</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="seconds">00</span>
+                        <span>Վայրկյան</span>
+                    </div>
                 </div>
             </div>
-            
-            <!-- Текст о крещении -->
+            <!-- Invitation Text -->
             <div class="invitation-text">
-                <p>Այս լուսավոր օրը մենք հրավիրում ենք ձեզ կիսվել մեր երեխաների մկրտության ուրախությամբ: Այս հատուկ օրը կդառնա նրանց հոգևոր ճանապարհի սկիզբ:</p>
+                <p>Սիրելի հարազատներ և ընկերներ,<br>ցանկանում ենք Ձեզ հետ կիսել մեր կյանքի լուսավոր օրը</p>
             </div>
         </div>
-        
         <div class="scroll-indicator">
             <span></span>
         </div>
     </section>
 
-    <!-- Секция для гостей -->
+    <!-- Guest Section -->
     <section class="section" id="guest">
         <div class="container">
             <div class="guest-message">
-                <h3>Հարգելի Հյուրեր</h3>
-                <p>Մենք մեծ ուրախությամբ սպասում ենք ձեզ այս լուսավոր տոնին: Ձեր ներկայությունը կլցնի այս օրը հատուկ ջերմությամբ և կդարձնի այդ օրը իսկապես անմոռանալի:</p>
+                <h3>Սպասում ենք Ձեզ մեր երեխաների՝ <span class="special-names">Արմանի և Ալյոնայի</span> Սուրբ Մկրտությանը</h3>
             </div>
         </div>
     </section>
 
-    <!-- Секция 1: Церковь -->
+    <!-- Church Section -->
     <section class="section" id="church">
         <div class="container">
-            <h2 class="section-title"></h2>
+            <h2 class="section-title">Մկրտություն</h2>
             <div class="cards-container">
                 <div class="card">
                     <div class="card-image church-image"></div>
                     <div class="card-content">
-                        <h3>Таинство Крещения</h3>
-                        <p><i>⏰</i> Ժամը: 16:30, Սեպտեմբերի 29-ին</p>
-                        <p><i>⛪</i> Վայրը: Սուրբ Սարգիս եկեղեցի</p>
-                        <p><i>📍</i> Հասցե: 21 Իսրայելյան փող․</p>
-                        
+                        <p><i>⏰</i> Ժամը: 16:30, Սեպտեմբերի 29-ին </p>
+                        <p><i>⛪</i> Վայրը: Սուրբ Սարգիս եկեղեցի </p>
+                        <p><i>📍</i> Հասցե: 21 Իսրայելյան փող․ </p>
                         <div class="location-buttons">
-                            <a href="https://maps.app.goo.gl/Ygis2auUmcMcJ2ea8" class="btn" target="_blank">
-                                Google Карты
-                            </a>
-                            <a href="https://yandex.com/maps/-/CLeZIEL9" class="btn btn-outline" target="_blank">
-                                Яндекс Карты
-                            </a>
+                            <a href="https://maps.app.goo.gl/Ygis2auUmcMcJ2ea8" class="btn map-btn" target="_blank">Google Maps</a>
+                            <a href="https://yandex.com/maps/-/CLeZIEL9" class="btn map-btn" target="_blank">Yandex Maps</a>
                         </div>
                     </div>
                 </div>
@@ -72,26 +75,20 @@
         </div>
     </section>
 
-    <!-- Секция 2: Ресторан -->
+    <!-- Restaurant Section -->
     <section class="section" id="restaurant">
         <div class="container">
-            <h2 class="section-title">Праздничный обед</h2>
+            <h2 class="section-title">Խնջույք</h2>
             <div class="cards-container">
                 <div class="card">
                     <div class="card-image restaurant-image"></div>
                     <div class="card-content">
-                        <h3>Празднование</h3>
                         <p><i>⏰</i> Ժամը: 18:00, Սեպտեմբերի 29-ին</p>
-                        <p><i>🍽️</i> Վայրը: Գետափ ռեստորանային համալիր</p>
+                        <p><i>🍽️</i> Վայրը: Գետափ ռեստորանային համալիր </p>
                         <p><i>📍</i> Հասցե: Հրազդանի կիրճ 9</p>
-                        
                         <div class="location-buttons">
-                            <a href="https://maps.app.goo.gl/S9RLsi5xGRX4XNL29" class="btn" target="_blank">
-                                Google Maps
-                            </a>
-                            <a href="https://yandex.com/maps/-/CLeZI46~" class="btn btn-outline" target="_blank">
-                                Yandex Maps
-                            </a>
+                            <a href="https://maps.app.goo.gl/S9RLsi5xGRX4XNL29" class="btn map-btn" target="_blank">Google Maps</a>
+                            <a href="https://yandex.com/maps/-/CLeZI46~" class="btn map-btn" target="_blank">Yandex Maps</a>
                         </div>
                     </div>
                 </div>
@@ -99,19 +96,15 @@
         </div>
     </section>
 
-    <!-- Заключительная секция -->
+    <!-- Final Invitation Section -->
     <section class="invitation">
         <div class="container">
-            <h2>Մենք սպասում ենք ձեզ!</h2>
-            <p>Ձեր ներկայությունը կդարձնի այս օրը իսկապես հատուկ և սիրով լի: Մեզ համար պատիվ կլինի կիսվել ձեզ հետ մեր երեխաների կյանքի այս հրաշալի արարողությունը:</p>
-            
-            <div class="bible-verse">
-                <p>"Пустите детей приходить ко Мне и не препятствуйте им, ибо таковых есть Царствие Божие."</p>
-                <span>Евангелие от Марка 10:14</span>
-            </div>
+            <h2>Սպասում ենք Ձեզ!</h2>
+            <p>Խնդրում ենք հաստատել Ձեր ներկայությունը միջոցառմանը</p>
+            <p class="signature">Սիրով՝ <span class="special-names">Վիգեն և Հասմիկ</span></p>
         </div>
-        
         <div class="hearts-container"></div>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScCuMZWoITdovqFwjHugckLH3nNBO4RYE4OJn_NjArVl1mXbQ/viewform?embedded=true" width="640" height="455" frameborder="0" marginheight="0" marginwidth="0">Загрузка…</iframe>
     </section>
 
     <script src="script.js"></script>

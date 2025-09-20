@@ -1,3 +1,4 @@
+/* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -6,131 +7,184 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background: #fffdf9;
-    color: #5a5a5a;
+    color: #2C3E50;
+    background-color: #F9F9F9;
     overflow-x: hidden;
+    position: relative;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+/* Background Stickers */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><text x="10" y="50" font-size="40" fill="#E8D5A3" opacity="0.15">✝️</text></svg>'),
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150"><text x="20" y="70" font-size="50" fill="#E8D5A3" opacity="0.1">🕊️</text></svg>'),
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><text x="30" y="90" font-size="30" fill="#E8D5A3" opacity="0.12">✝️</text></svg>'),
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120"><text x="15" y="60" font-size="45" fill="#E8D5A3" opacity="0.1">🕊️</text></svg>');
+    background-position: 
+        10% 15%, 85% 25%, 25% 65%, 95% 75%;
+    background-repeat: repeat;
+    background-size: 150px 150px, 200px 200px, 250px 250px, 180px 180px;
+    pointer-events: none;
+    z-index: -1;
+    animation: subtle-float 25s infinite ease-in-out;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+@keyframes subtle-float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
 }
 
-@keyframes slideUp {
-    from { transform: translateY(50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
-@keyframes scaleIn {
-    from { transform: scale(0.9); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
-}
-
-@keyframes scroll {
-    0% { opacity: 0; height: 0; }
-    50% { opacity: 1; height: 30px; }
-    100% { opacity: 0; height: 0; top: 20px; }
-}
-
+/* Hero Section */
 .hero {
-    min-height: 100vh;
+    height: 100vh;
+    background: linear-gradient(180deg, #FFF8E1 0%, #FFFFFF 100%);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 40px 20px;
-    background: linear-gradient(135deg, rgba(255,253,249,0.9) 0%, rgba(255,250,240,0.9) 100%);
     position: relative;
-    overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1.2s ease, transform 1.2s ease;
 }
 
-.hero::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><path fill="none" stroke="rgba(212,175,135,0.2)" stroke-width="1" d="M10,10L50,10L50,50L10,50Z"/></svg>');
-    animation: float 15s ease-in-out infinite;
+.hero.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .hero-content {
-    max-width: 800px;
-    z-index: 2;
+    max-width: 900px;
+    padding: 20px;
 }
 
-.names-container {
-    margin: 30px 0;
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5em;
+    color: #2C3E50;
+    margin-bottom: 30px;
     opacity: 0;
-    animation: scaleIn 1s ease forwards 0.5s;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.name-item {
-    margin: 15px 0;
-    font-size: 2.2rem;
-    font-weight: 500;
-    color: #7a4f4f;
+.hero.visible .hero-title {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.countdown {
+    margin: 30px 0;
+}
+
+.countdown h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8em;
+    color: #2C3E50;
+    margin-bottom: 15px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease 0.2s;
+}
+
+.hero.visible .countdown h3 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.countdown-timer {
     display: flex;
-    align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
+    gap: 20px;
 }
 
-.name-item .date {
-    background: #d4af87;
-    color: white;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 1.2rem;
-    margin-left: 15px;
-    margin-top: 5px;
+.countdown-item {
+    text-align: center;
 }
 
-.invitation-text {
-    font-size: 1.5rem;
-    margin: 30px 0;
-    max-width: 700px;
+.countdown-item span:first-child {
+    display: block;
+    font-size: 3em;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    color: #D4A017;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     opacity: 0;
-    animation: slideUp 1s ease forwards 1.5s;
-    line-height: 1.6;
+    transform: scale(0.9);
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
+.hero.visible .countdown-item span:first-child {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.countdown-item span:last-child {
+    font-size: 1.1em;
+    color: #7F8C8D;
+}
+
+.countdown-item:nth-child(1) span:first-child { transition-delay: 0.4s; }
+.countdown-item:nth-child(2) span:first-child { transition-delay: 0.6s; }
+.countdown-item:nth-child(3) span:first-child { transition-delay: 0.8s; }
+.countdown-item:nth-child(4) span:first-child { transition-delay: 1s; }
+
+.invitation-text p {
+    font-size: 1.3em;
+    line-height: 1.7;
+    color: #2C3E50;
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease 0.6s;
+}
+
+.hero.visible .invitation-text p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Scroll Indicator */
 .scroll-indicator {
     position: absolute;
     bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 2px;
+    width: 24px;
     height: 40px;
-    background: rgba(179, 135, 45, 0.5);
+    border: 2px solid #2C3E50;
+    border-radius: 20px;
 }
 
 .scroll-indicator span {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 10px;
-    background: #b3872d;
-    animation: scroll 2s infinite;
+    display: block;
+    width: 6px;
+    height: 6px;
+    background: #2C3E50;
+    border-radius: 50%;
+    margin: 8px auto;
+    animation: scroll 1.8s infinite ease-in-out;
 }
 
+@keyframes scroll {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(15px); opacity: 0; }
+}
+
+/* General Section Styles */
 .section {
-    padding: 100px 0;
+    padding: 100px 20px;
+    text-align: center;
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 1s ease, transform 1s ease;
@@ -141,242 +195,318 @@ body {
     transform: translateY(0);
 }
 
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
 .section-title {
     font-family: 'Playfair Display', serif;
-    text-align: center;
-    font-size: 2.5rem;
+    font-size: 2.8em;
+    color: #2C3E50;
     margin-bottom: 50px;
-    color: #b3872d;
     position: relative;
 }
 
 .section-title::after {
-    content: "";
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 2px;
-    background: #d4af87;
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #E8D5A3;
+    margin: 15px auto 0;
 }
 
+/* Guest Section */
+.guest-message h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2em;
+    color: #2C3E50;
+    margin-bottom: 25px;
+}
+
+.special-names {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5em;
+    color: #D4A017;
+    font-weight: 700;
+}
+
+/* Cards */
 .cards-container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 30px;
 }
 
 .card {
-    background: white;
-    border-radius: 10px;
+    background: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    max-width: 450px;
+    margin: 20px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
     opacity: 0;
-    transform: translateY(30px);
-    max-width: 500px;
-    border: 1px solid rgba(212, 175, 135, 0.3);
-    flex: 1;
-    min-width: 300px;
+    transform: scale(0.95);
 }
 
-.card.visible {
+.section.visible .card {
     opacity: 1;
-    transform: translateY(0);
+    transform: scale(1);
 }
 
 .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    transform: scale(1.03);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
 
 .card-image {
-    height: 300px; /* Increased height to show more of the image */
-    background-size: contain; /* Changed from cover to contain to show full image */
+    height: 280px;
+    background-size: cover;
     background-position: center;
-    background-repeat: no-repeat; /* Prevent repeating */
-    background-color: white; /* Added white background for transparent areas */
-    position: relative;
-    border-bottom: 1px solid #f0f0f0; /* Subtle separator */
 }
 
 .church-image {
-    background: url('1.jpg') center/contain no-repeat white;
+    background-image: url('1.jpg'); /* Replace with actual church image */
 }
 
 .restaurant-image {
-    background: url('2.jpg') center/contain no-repeat white;
+    background-image: url('2.jpg'); /* Replace with actual restaurant image */
 }
 
 .card-content {
     padding: 25px;
 }
 
-.card h3 {
+.card-content h3 {
     font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-    color: #b3872d;
+    font-size: 1.9em;
+    color: #2C3E50;
+    margin-bottom: 20px;
 }
 
-.card p {
+.card-content p {
+    font-size: 1.1em;
+    color: #2C3E50;
     margin: 10px 0;
     display: flex;
     align-items: center;
 }
 
-.card p i {
-    margin-right: 10px;
-    color: #d4af87;
-    min-width: 20px;
+.card-content p i {
+    margin-right: 12px;
+    font-size: 1.3em;
+    color: #7F8C8D;
 }
 
 .location-buttons {
     display: flex;
+    justify-content: center;
     gap: 15px;
-    margin-top: 20px;
-    justify-content: center;
+    margin-top: 25px;
 }
 
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+.btn, .map-btn {
     padding: 12px 25px;
-    background: #b3872d;
-    color: white;
+    background: #D4A017;
+    color: #FFFFFF;
     text-decoration: none;
-    border-radius: 50px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    border: 2px solid #b3872d;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: background 0.3s ease;
+    display: inline-block;
 }
 
-.btn:hover {
-    background: transparent;
-    color: #b3872d;
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(179, 135, 45, 0.3);
+.btn:hover, .map-btn:hover {
+    background: #B8860B;
 }
 
-.btn-outline {
-    background: transparent;
-    color: #b3872d;
+@media (max-width: 480px) {
+    .location-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn, .map-btn {
+        width: 100%;
+        text-align: center;
+    }
 }
 
-.btn-outline:hover {
-    background: #b3872d;
-    color: white;
-}
-
+/* Invitation Section */
 .invitation {
+    background: linear-gradient(180deg, #FFFFFF 0%, #FFF8E1 100%);
+    padding: 100px 20px;
     text-align: center;
-    padding: 120px 0;
-    background: linear-gradient(135deg, rgba(255,253,249,0.9) 0%, rgba(255,250,240,0.9) 100%);
     position: relative;
-    overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.invitation.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .invitation h2 {
     font-family: 'Playfair Display', serif;
-    font-size: 3rem;
-    margin-bottom: 30px;
-    color: #b3872d;
+    font-size: 2.8em;
+    color: #2C3E50;
+    margin-bottom: 25px;
 }
 
 .invitation p {
-    font-size: 1.5rem;
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.6;
+    font-size: 1.2em;
+    line-height: 1.7;
+    color: #2C3E50;
+    max-width: 650px;
+    margin: 0 auto 30px;
 }
 
 .bible-verse {
-    margin-top: 50px;
-    padding: 30px;
-    background: rgba(255, 255, 255, 0.7);
-    border-radius: 10px;
-    display: inline-block;
-    border-left: 4px solid #d4af87;
+    font-style: italic;
+    margin: 40px auto;
+    max-width: 650px;
 }
 
 .bible-verse p {
-    font-style: italic;
-    font-size: 1.3rem;
-    color: #7a4f4f;
+    font-size: 1.3em;
+    color: #2C3E50;
 }
 
 .bible-verse span {
     display: block;
-    margin-top: 10px;
-    font-size: 1rem;
-    color: #b3872d;
+    font-size: 0.95em;
+    color: #7F8C8D;
+    margin-top: 15px;
 }
 
-.guest-message {
-    background: rgba(255, 255, 255, 0.8);
-    padding: 40px;
-    border-radius: 10px;
-    margin: 40px auto;
-    max-width: 800px;
-    border: 2px solid #d4af87;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-.guest-message h3 {
+.signature {
     font-family: 'Playfair Display', serif;
-    color: #b3872d;
-    font-size: 2rem;
-    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: #2C3E50;
+    margin-top: 20px;
 }
 
-.guest-message p {
-    font-size: 1.3rem;
-    line-height: 1.6;
+.hearts-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50"><text x="10" y="35" font-size="30" fill="#E8D5A3" opacity="0.3">♥</text></svg>') repeat-x bottom;
+    animation: slide-hearts 20s linear infinite;
 }
 
-@media (max-width: 767px) {
-    .name-item {
-        font-size: 1.8rem;
+@keyframes slide-hearts {
+    0% { background-position: 0 100%; }
+    100% { background-position: 100% 100%; }
+}
+
+/* Iframe Styling */
+iframe {
+    display: block;
+    margin: 50px auto 0;
+    border: none;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    max-width: 100%;
+    width: 640px;
+    height: 455px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero {
+        height: auto;
+        padding: 60px 20px;
     }
-    
-    .name-item .date {
-        font-size: 1rem;
+
+    .hero-title {
+        font-size: 2.5em;
     }
-    
-    .invitation-text {
-        font-size: 1.2rem;
+
+    .countdown-timer {
+        gap: 10px;
     }
-    
+
+    .countdown-item span:first-child {
+        font-size: 2em;
+        padding: 10px 15px;
+    }
+
+    .invitation-text p {
+        font-size: 1.1em;
+    }
+
     .section-title {
-        font-size: 2rem;
+        font-size: 2.2em;
     }
-    
-    .invitation h2 {
-        font-size: 2.2rem;
+
+    .guest-message h3 {
+        font-size: 1.8em;
     }
-    
-    .invitation p {
-        font-size: 1.2rem;
+
+    .special-names {
+        font-size: 2em;
     }
-    
-    .bible-verse p {
-        font-size: 1.1rem;
+
+    .card {
+        max-width: 100%;
+        margin: 15px;
     }
-    
-    .location-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .btn {
-        width: 100%;
-        max-width: 250px;
-    }
-    
+
     .card-image {
-        height: 250px; /* Slightly smaller on mobile */
+        height: 200px;
+    }
+
+    .card-content h3 {
+        font-size: 1.6em;
+    }
+
+    .invitation h2 {
+        font-size: 2.2em;
+    }
+
+    .signature {
+        font-size: 1.3em;
+    }
+
+    .special-names {
+        font-size: 1.8em;
+    }
+
+    iframe {
+        width: 100%;
+        height: 455px;
+    }
+}
+
+@media (max-width: 480px) {
+    .countdown-timer {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .guest-message h3 {
+        font-size: 1.5em;
+    }
+
+    .special-names {
+        font-size: 1.6em;
+    }
+
+    .invitation p {
+        font-size: 1em;
+    }
+
+    .signature {
+        font-size: 1.2em;
+    }
+
+    .special-names {
+        font-size: 1.4em;
     }
 }
